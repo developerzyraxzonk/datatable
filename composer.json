@@ -1,0 +1,27 @@
+{
+    "name": "xdevpusaka/datatable",
+    "description": "Laravel Datatable based on Pusaka Framework Datatable",
+    "keywords": [
+        "laravel",
+        "datatables"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Richard",
+            "email": "developer@xdevpusaka.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2.0",
+		"xdevpusaka//database": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xdevpusaka\\DataTable\\": "src/"
+        }
+    },
+    "prefer-stable": true
+}
