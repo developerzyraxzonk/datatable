@@ -20,16 +20,18 @@ class Builder {
 	private $attribute;
 	private $uniqe;
 	private $search;
+	private $searchKey;
 
 	private $page;
 
 	function __construct() {
 
-		$this->limit 	= 10;
-		$this->page 	= 1;
-		$this->uniqe 	= strtoupper('COUNT' . uniqid());
-		$this->db 		= 'default';
-		$this->search 	= NULL;
+		$this->limit 		= 10;
+		$this->page 		= 1;
+		$this->uniqe 		= strtoupper('COUNT' . uniqid());
+		$this->db 			= 'default';
+		$this->search 		= NULL;
+		$this->searchKey 	= '_search';
 
 	}
 
@@ -85,6 +87,12 @@ class Builder {
 
 	}
 
+	function searchKey( $searchKey ) {
+
+		$this->searchKey = $searchKey;
+
+	}
+
 	private function __search( $query, $key, $search ) {
 
 		if( is_string($key) ) {
@@ -135,7 +143,7 @@ class Builder {
 
 		$this->search 	= (string) (Request::get('_search') ?? NULL);
 
-		$this->search 	= trim($this->search);
+		$this->search 	= trim($this->searchKey);
 
 		$get 		 	= Request::get();
 
@@ -143,7 +151,7 @@ class Builder {
 		//------------------------------------------------------
 		foreach ( $get as $key => $search ) {
 			
-			if( in_array(trim($key), ['_page', '_limit', '_search', '_order']) ) {
+			if( in_array(trim($key), ['_page', '_limit', $this->searchKey, '_order']) ) {
 				continue;
 			}
 
