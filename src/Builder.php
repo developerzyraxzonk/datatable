@@ -141,9 +141,9 @@ class Builder {
 		//---------------------------------
 		$this->page  	= (int) (Request::get('_page') ?? $this->page);
 
-		$this->search 	= (string) (Request::get('_search') ?? NULL);
+		$this->search 	= (string) (Request::get($this->searchKey) ?? NULL);
 
-		$this->search 	= trim($this->searchKey);
+		$this->search 	= trim($this->search);
 
 		$get 		 	= Request::get();
 
